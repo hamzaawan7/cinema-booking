@@ -36,6 +36,7 @@
                     </P>
                 </div>
                 @endforeach
+
                 <div class="available_tickets_container">
                     <div class="container">
                         <div class="seat-selection">
@@ -43,10 +44,13 @@
 
                             <div class="seat-cards">
                                 @foreach($seats as $key => $seat)
-                                    <div @if(in_array($seat->id,$seatIds)) data-toggle="tooltip" data-placement="top" title="Seat Not Available" @endif class="seat-card @if(in_array($seat->id,$seatIds)) booked_seat @endif">
+                                    <div @if(in_array($seat->id,$seatIds)) data-toggle="tooltip" data-placement="top"
+                                         title="Seat Not Available"
+                                         @endif class="seat-card @if(in_array($seat->id,$seatIds)) booked_seat @endif">
                                         <input type="checkbox" name="num_tickets[]" id="seat-{{$key}}_{{$seat->id}}"
                                                value="{{$seat->id}}">
-                                        <label for="seat-{{$key}}_{{$seat->id}}" class=" seats @if(in_array($seat->id,$seatIds)) booked @endif">
+                                        <label for="seat-{{$key}}_{{$seat->id}}"
+                                               class=" seats @if(in_array($seat->id,$seatIds)) booked @endif">
                                             <span><i class="fas fa-chair" style="font-size: 24px;"></i></span>
                                             <span>{{$seat->seat_number}}</span>
                                         </label>

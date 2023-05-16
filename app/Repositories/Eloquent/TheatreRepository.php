@@ -9,14 +9,13 @@ use App\Repositories\TheatreRepositoryInterface;
  * Class TheatreRepository
  * @package App\Repositories\Eloquent
  */
-class TheatreRepository implements TheatreRepositoryInterface
+class TheatreRepository extends BaseRepository implements TheatreRepositoryInterface
 {
     /**
-     * @param $id
-     * @return mixed
+     * @param Theatre $model
      */
-    public function find($id)
+    public function __construct(Theatre $model)
     {
-        return Theatre::where('cinema_id', $id)->get();
+        parent::__construct($model);
     }
 }

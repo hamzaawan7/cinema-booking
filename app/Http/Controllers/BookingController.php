@@ -58,7 +58,7 @@ class BookingController extends Controller
     public function getShows(int $id)
     {
         $shows = $this->cinemaBookingService->findShow($id);
-        $seatIds = $shows[0]->bookings->pluck('seat_id')->toArray();
+        $seatIds = $shows[0]->bookings->pluck('seat_id')->toArray() ?? '';
         $seats = $this->cinemaBookingService->allSeats();
 
         return view('show', compact('shows', 'seats', 'seatIds'));

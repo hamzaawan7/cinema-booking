@@ -9,12 +9,6 @@ namespace App\Repositories;
 interface ShowRepositoryInterface
 {
     /**
-     * @param $id
-     * @return mixed
-     */
-    public function find($id);
-
-    /**
      * @param $request
      * @return mixed
      */

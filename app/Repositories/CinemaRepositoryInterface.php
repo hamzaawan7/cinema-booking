@@ -9,8 +9,4 @@ namespace App\Repositories;
 interface CinemaRepositoryInterface
 {
 
-    /**
-     * @return mixed
-     */
-    public function all();
 }

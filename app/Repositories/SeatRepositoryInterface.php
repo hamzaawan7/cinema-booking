@@ -9,8 +9,5 @@ namespace App\Repositories;
  */
 interface SeatRepositoryInterface
 {
-    /**
-     * @return mixed
-     */
-    public function all();
+
 }

@@ -9,15 +9,14 @@ use App\Repositories\ShowRepositoryInterface;
  * Class ShowRepository
  * @package App\Repositories\Eloquent
  */
-class ShowRepository implements ShowRepositoryInterface
+class ShowRepository extends BaseRepository implements ShowRepositoryInterface
 {
     /**
-     * @param $id
-     * @return mixed
+     * @param Show $model
      */
-    public function find($id)
+    public function __construct(Show $model)
     {
-        return Show::where('theatre_id', $id)->with('film')->get();
+        parent::__construct($model);
     }
 
     /**

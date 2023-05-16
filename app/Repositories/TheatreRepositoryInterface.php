@@ -8,9 +8,5 @@ namespace App\Repositories;
  */
 interface TheatreRepositoryInterface
 {
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function find($id);
+
 }

@@ -9,8 +9,16 @@ use App\Repositories\BookingRepositoryInterface;
  * Class BookingRepository
  * @package App\Repositories\Eloquent
  */
-class BookingRepository implements BookingRepositoryInterface
+class BookingRepository extends BaseRepository implements BookingRepositoryInterface
 {
+    /**
+     * @param Booking $model
+     */
+    public function __construct(Booking $model)
+    {
+        parent::__construct($model);
+    }
+
     /**
      * @param $request
      * @return void

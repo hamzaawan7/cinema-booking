@@ -4,19 +4,18 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Cinema;
 use App\Repositories\CinemaRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class CinemaRepository
  * @package App\Repositories\Eloquent
  */
-class CinemaRepository implements CinemaRepositoryInterface
+class CinemaRepository extends BaseRepository implements CinemaRepositoryInterface
 {
     /**
-     * @return Cinema[]|Collection
+     * @param Cinema $model
      */
-    public function all()
+    public function __construct(Cinema $model)
     {
-        return Cinema::all();
+        parent::__construct($model);
     }
 }
