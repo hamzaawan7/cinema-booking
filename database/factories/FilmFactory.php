@@ -22,7 +22,7 @@ class FilmFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word . ' Film',
+            'title' => ucfirst($this->faker->word) . ' Film',
             'description' => $this->faker->paragraph,
         ];
     }

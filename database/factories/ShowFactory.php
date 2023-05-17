@@ -25,17 +25,9 @@ class ShowFactory extends Factory
      */
     public function definition(): array
     {
-        $theatres = Theatre::all();
-        $films = Film::all();
-
-        $theatre = $this->faker->randomElement($theatres);
-        $film = $this->faker->randomElement($films);
-
         return [
-            'theatre_id' => $theatre->id,
-            'film_id' => $film->id,
             'available_seats' => 30,
-            'show_time' => $this->faker->dateTimeBetween('+1 day', '+1 week'),
+            'show_time' => $this->faker->dateTimeBetween('+1 day', '+1 week')->format('Y-m-d H:00:00'),
         ];
     }
 }

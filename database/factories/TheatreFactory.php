@@ -20,7 +20,7 @@ class TheatreFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word . ' Theatre',
+            'name' => ucfirst($this->faker->word) . ' Theatre',
             'max_seats' => 30,
         ];
     }

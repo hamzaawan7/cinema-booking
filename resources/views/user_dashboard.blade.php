@@ -31,8 +31,8 @@
 
                         @if ($cancelTime->lt($showTime))
                             <td>
-                                <a href="{{route('cancle-booking',['id' => $booking->id])}}"
-                                   class="btn btn-dark">Cancel Booking
+                                <a href="{{route('cancel-booking',['id' => $booking->id])}}"
+                                   class="btn btn-danger">Cancel Booking
                                 </a>
                             </td>
                         @endif

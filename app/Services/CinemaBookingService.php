@@ -47,13 +47,12 @@ class CinemaBookingService
      * @param SeatRepositoryInterface $seatRepository
      */
     public function __construct(
-        CinemaRepositoryInterface  $cinemaRepository,
-        ShowRepositoryInterface    $showRepository,
+        CinemaRepositoryInterface $cinemaRepository,
+        ShowRepositoryInterface $showRepository,
         TheatreRepositoryInterface $theatreRepository,
         BookingRepositoryInterface $bookingRepository,
-        SeatRepositoryInterface    $seatRepository
-    )
-    {
+        SeatRepositoryInterface $seatRepository
+    ) {
         $this->cinemaRepository = $cinemaRepository;
         $this->showRepository = $showRepository;
         $this->theatreRepository = $theatreRepository;
@@ -84,7 +83,7 @@ class CinemaBookingService
      */
     public function findShow($id)
     {
-        return $this->showRepository->allWhere(['*'], ['theatre_id' => $id],['film']);
+        return $this->showRepository->allWhere(['*'], ['theatre_id' => $id], ['film']);
     }
 
     /**
@@ -109,7 +108,7 @@ class CinemaBookingService
      * @param $id
      * @return mixed
      */
-    public function cancleBooking($id)
+    public function cancelBooking($id)
     {
         return $this->bookingRepository->softDeleteBooking($id);
     }

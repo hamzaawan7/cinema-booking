@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class BookingController
@@ -27,6 +26,8 @@ class BookingController extends Controller
      */
     public function __construct(CinemaBookingService $cinemaBookingService)
     {
+        $this->middleware('auth')->only(['booking']);
+
         $this->cinemaBookingService = $cinemaBookingService;
     }
 
@@ -58,6 +59,7 @@ class BookingController extends Controller
     public function getShows(int $id)
     {
         $shows = $this->cinemaBookingService->findShow($id);
+
         $seatIds = $shows[0]->bookings->pluck('seat_id')->toArray() ?? '';
         $seats = $this->cinemaBookingService->allSeats();
 
@@ -70,16 +72,14 @@ class BookingController extends Controller
      */
     public function cinemaBooking(Request $request)
     {
-        if (Auth::check()) {
-            if (isset($request->num_tickets)) {
-                $this->cinemaBookingService->subtractShowTicket($request);
-                $this->cinemaBookingService->saveBooking($request);
+        if (isset($request->num_tickets)) {
+            $this->cinemaBookingService->subtractShowTicket($request);
+            $this->cinemaBookingService->saveBooking($request);
 
-                return redirect()->route('dashboard')->with('message', 'Seats Booked Successfully');
-            }
-        } else {
-            return view('auth.login');
+            return redirect()->route('dashboard')->with('message', 'Seats Booked Successfully');
         }
+
+        return redirect()->back('warning')->with('message', 'Please Select Seats');
     }
 
     /**
@@ -96,10 +96,10 @@ class BookingController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function cancleBooking(int $id): RedirectResponse
+    public function cancelBooking(int $id): RedirectResponse
     {
-        $this->cinemaBookingService->cancleBooking($id);
+        $this->cinemaBookingService->cancelBooking($id);
 
-        return back()->with('info', 'Booking Cancle Successfully');
+        return back()->with('danger', 'Booking Cancelled Successfully');
     }
 }

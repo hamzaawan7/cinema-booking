@@ -35,7 +35,6 @@
                         {{@$show->film->description}}
                     </P>
                 </div>
-                @endforeach
 
                 <div class="available_tickets_container">
                     <div class="container">
@@ -61,8 +60,10 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mt-2">
-                <button type="submit" class="btn btn-dark text-center">Book Now</button>
-            </div>
+        @endforeach
+
+        <div class="d-flex justify-content-center mt-2">
+            <button type="submit" class="btn btn-dark text-center">Book Now</button>
+        </div>
     </div>
 </div>

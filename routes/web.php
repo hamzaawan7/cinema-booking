@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,20 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('index');
-});*/
+Auth::routes();
 
 Route::get('/', [BookingController::class, 'index']);
 Route::get('/theatre/{id}', [BookingController::class, 'getTheatres']);
 Route::get('/show/{id}', [BookingController::class, 'getShows']);
-Route::post('/cinema/booking', [BookingController::class, 'cinemaBooking'])->name('cinema-booking');
-
-Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/user/dashboard', [BookingController::class, 'dashboard'])->name('dashboard');
-    Route::get('/cancle/booking/{id}', [BookingController::class, 'cancleBooking'])->name('cancle-booking');
+    Route::get('/cancel/booking/{id}', [BookingController::class, 'cancelBooking'])->name('cancel-booking');
+    Route::post('/cinema/booking', [BookingController::class, 'cinemaBooking'])->name('booking');
 });
